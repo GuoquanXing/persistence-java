@@ -1,8 +1,14 @@
 package com.sap.cc.library.book;
 
-public class Book {
+import javax.persistence.*;
 
+@Entity
+public class Book {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String title;
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Author author;
 
     public Book() {
@@ -27,5 +33,13 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
